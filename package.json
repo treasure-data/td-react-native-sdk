@@ -1,6 +1,6 @@
 {
   "name": "td-react-native-sdk",
-  "title": "React Native Td React Native Sdk",
+  "title": "Treasure Data React Native SDK",
   "version": "1.0.0",
   "description": "TODO",
   "main": "index.js",
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/td-react-native-sdk.git",
-    "baseUrl": "https://github.com/github_account/td-react-native-sdk"
+    "url": "git+https://github.com/treasure-data/td-react-native-sdk.git",
+    "baseUrl": "https://github.com/treasure-data/td-react-native-sdk"
   },
   "keywords": [
-    "react-native"
+    "react-native", "treasure-data"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "Treasure Data",
+    "url": "https://www.treasuredata.com"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",

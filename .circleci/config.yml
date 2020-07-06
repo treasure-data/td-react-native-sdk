@@ -1,0 +1,27 @@
+version: 2.1
+
+orbs:
+  rn: react-native-community/react-native@4.4.2
+
+jobs:
+  build_sdk:
+    executor: rn/linux_js
+    steps:
+      - attach_workspace:
+          at: .
+      - rn/yarn_install
+  checkout_code:
+    executor: rn/linux_js
+    steps:
+      - checkout
+      - persist_to_workspace:
+          paths: .
+          root: .
+
+workflows:
+  test:
+    jobs:
+      - checkout_code
+      - build_sdk:
+          requires:
+            - checkout_code
