@@ -1,8 +1,8 @@
 {
   "name": "td-react-native-sdk",
   "title": "Treasure Data React Native SDK",
-  "version": "1.0.0",
-  "description": "TODO",
+  "version": "0.0.1",
+  "description": "React Native SDK for integration with Treasure Data",
   "main": "index.js",
   "files": [
     "README.md",
