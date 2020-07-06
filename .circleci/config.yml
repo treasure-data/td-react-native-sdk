@@ -16,4 +16,4 @@ version: 2.1
 workflows:
   test:
     jobs:
-      - build
+      - install
