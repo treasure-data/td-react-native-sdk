@@ -22,9 +22,9 @@ RCT_EXPORT_METHOD(setup:(NSDictionary *)configuration)
 RCT_EXPORT_METHOD(addEvent:(NSDictionary *)event table:(NSString *)table database:(NSString *)database)
 {
     if (database == nil) {
-        [[TreasureData sharedInstance] addEvent:event database:database table:table];
-    } else {
         [[TreasureData sharedInstance] addEvent:event table:table];
+    } else {
+        [[TreasureData sharedInstance] addEvent:event database:database table:table];
     }
 }
 
