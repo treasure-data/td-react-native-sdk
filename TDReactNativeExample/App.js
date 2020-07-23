@@ -20,11 +20,20 @@ import {
 import TreasureData from 'td-react-native-sdk';
 import DefaultConfiguration from './credentials/DefaultConfiguration';
 import Row from './Row';
+import * as RNIap from 'react-native-iap';
+
+const itemSkus = Platform.select({
+  ios: [
+    'com.treasuredata.iaptest.consumable1'
+  ],
+  android: [
+    'gas'
+  ]
+});
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    // TDReactNativeSDK.sampleMethod("Test string", 1234, (result) => console.log(result));
     config = DefaultConfiguration ? DefaultConfiguration : {};
     TreasureData.setup(config);
 
@@ -262,6 +271,18 @@ class App extends React.Component {
     TreasureData.isInAppPurchaseEventEnabled(enabled => this.alert('IAP Event', 'is ' + (enabled ? "enabled" : "not enabled")));
   }
 
+  purchaseInAppPurchase = async () => {
+    const productId = itemSkus[0];
+    try {
+      const products = await RNIap.getProducts(itemSkus);
+      console.log('products', products);
+      const productPurchase = await RNIap.requestPurchase(productId, false)
+      this.alert('Purchased successfully', JSON.stringify(productPurchase));
+    } catch (error) {
+      this.alert('Purchase Error', 'Error: ' + error.code + ' ' + errorMessage);
+    }
+  }
+
   // Profile API
 
   fetchUserSegments = () => {
@@ -431,6 +452,7 @@ class App extends React.Component {
                 <Row title="Enable" onPress={this.enableInAppPurchaseEvent} />
                 <Row title="Disable" onPress={this.disableInAppPurchaseEvent} />
                 <Row title="Is Enabled?" onPress={this.isInAppPurchaseEventEnabled} />
+                <Row title="Purchase" onPress={this.purchaseInAppPurchase} />
               </View>
               <Text style={styles.sectionTitle}>Profile API</Text>
               <View style={styles.sectionContainer}>

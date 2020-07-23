@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.tdreactnativeexample"
+        applicationId "com.treasuredata.android.demo.trivialdrive2.billingsample"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
