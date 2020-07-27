@@ -87,7 +87,8 @@ TreasureData.isAppLifecycleEventEnabled((enabled) => {
 })
 ```
 
-## Track in app purchase events automatically
+## (Android only) Track in app purchase events automatically
+This feature is only available in Android. You don't need to check for platform when calling this feature's APIs, they will simply be no-op.
 In app purchase event tracking is optional and not enable by default. To track in app purchase events automatically, you only need to add a line of code:
 ```javascript
 TreasureData.enableInAppPurchaseEvent();
