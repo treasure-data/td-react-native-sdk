@@ -278,8 +278,9 @@ class App extends React.Component {
       console.log('products', products);
       const productPurchase = await RNIap.requestPurchase(productId, false)
       this.alert('Purchased successfully', JSON.stringify(productPurchase));
+      await RNIap.consumeAllItemsAndroid();
     } catch (error) {
-      this.alert('Purchase Error', 'Error: ' + error.code + ' ' + errorMessage);
+      this.alert('Purchase Error', 'Error: ' + error.code + ' ' + error.message);
     }
   }
 
