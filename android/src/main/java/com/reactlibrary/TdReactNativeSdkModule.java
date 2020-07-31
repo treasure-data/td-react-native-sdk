@@ -13,9 +13,11 @@ import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.treasuredata.android.TDCallback;
 import com.treasuredata.android.TreasureData;
+import com.treasuredata.android.cdp.CDPAPIException;
 import com.treasuredata.android.cdp.FetchUserSegmentsCallback;
 import com.treasuredata.android.cdp.Profile;
 
+import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +30,8 @@ public class TdReactNativeSdkModule extends ReactContextBaseJavaModule {
     private final String MODULE_NAME = "TdReactNativeSdk";
     private final String DEFAULT_DATABASE = "td_react_native_sdk";
     private final String DEFAULT_TABLE = "samples";
+    private final String ERROR_404 = "Not Found";
+    private final String ERROR_400 = "Bad Request";
 
     public TdReactNativeSdkModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -177,11 +181,18 @@ public class TdReactNativeSdkModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onError(Exception e) {
-                String message = "Failed to fetch user segments. Error message: " + e.getMessage();
                 if (failure != null) {
-                    failure.invoke(e.toString(), e.getMessage());
+                    if (e instanceof CDPAPIException) {
+                        final CDPAPIException cdpe = (CDPAPIException) e;
+
+                        failure.invoke(cdpe.getStatus(), cdpe.getError());
+                    } else if (e instanceof FileNotFoundException){
+                        failure.invoke(404, ERROR_404);
+                    } else {
+                        failure.invoke(400, ERROR_400);
+                    }
                 } else {
-                    Log.e(MODULE_NAME, message);
+                    Log.e(MODULE_NAME, e.getMessage());
                 }
             }
         });
