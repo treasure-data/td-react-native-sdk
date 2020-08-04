@@ -11,7 +11,7 @@ RCT_EXPORT_METHOD(setup:(NSDictionary *)configuration)
 {
     [TreasureData initializeApiEndpoint:configuration[@"apiEndpoint"]];
     [TreasureData initializeEncryptionKey:configuration[@"encryptionKey"]];
-    [TreasureData initializeWithApiKey:configuration[@"***REMOVED***"]];
+    [TreasureData initializeWithApiKey:configuration[@"apiKey"]];
     [[TreasureData sharedInstance] setDefaultDatabase:configuration[@"defaultDatabase"]];
     [[TreasureData sharedInstance] setDefaultTable:configuration[@"defaultTable"]];
     [[TreasureData sharedInstance] setCdpEndpoint:configuration[@"cdpEndpoint"]];
