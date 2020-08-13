@@ -295,10 +295,12 @@ PODS:
     - React-cxxreact (= 0.62.2)
     - React-jsi (= 0.62.2)
     - ReactCommon/callinvoker (= 0.62.2)
-  - td-react-native-sdk (1.0.0):
+  - RNIap (4.5.0):
     - React
-    - TreasureData-iOS-SDK
-  - TreasureData-iOS-SDK (0.5.0):
+  - td-react-native-sdk (0.0.1):
+    - React
+    - TreasureData-iOS-SDK (= 0.6.1)
+  - TreasureData-iOS-SDK (0.6.1):
     - KeenClientTD (= 3.2.35)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -351,7 +353,8 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/callinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - td-react-native-sdk (from `../node_modules/td-react-native-sdk`)
+  - RNIap (from `../node_modules/react-native-iap`)
+  - td-react-native-sdk (from `../..`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -420,8 +423,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNIap:
+    :path: "../node_modules/react-native-iap"
   td-react-native-sdk:
-    :path: "../node_modules/td-react-native-sdk"
+    :path: "../.."
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -462,8 +467,9 @@ SPEC CHECKSUMS:
   React-RCTText: fae545b10cfdb3d247c36c56f61a94cfd6dba41d
   React-RCTVibration: 4356114dbcba4ce66991096e51a66e61eda51256
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
-  td-react-native-sdk: b785492656bc902fa7e34f695f5b6673f5a1710f
-  TreasureData-iOS-SDK: 0ef4605b514ffdf08f7baf348e33a3747060874a
+  RNIap: e5ddd3f0621c714e48dace1e89a644c86a5e23fe
+  td-react-native-sdk: 01a8bda926dfe7e3f42d7f919416af0c8586dacb
+  TreasureData-iOS-SDK: 20112bfd9942f64b9d12cc4619e6ce2f1dcfb8e6
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

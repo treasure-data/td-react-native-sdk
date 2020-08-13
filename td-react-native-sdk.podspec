@@ -22,8 +22,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency "React"
-  s.dependency "TreasureData-iOS-SDK"
-  # ...
-  # s.dependency "..."
+  s.dependency "TreasureData-iOS-SDK", "= 0.6.1"
 end
 
