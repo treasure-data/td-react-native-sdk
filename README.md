@@ -19,7 +19,7 @@ import TreasureData from 'td-react-native-sdk';
 TreasureData.setup({
   apiEndpoint: 'https://in.treasure-data.com', // Or other supported endpoints
   encryptionKey: 'xxxxx',
-  ***REMOVED***: 'xxxxx', /// You should use write only api key
+  apiKey: 'xxxxx', /// You should use write only api key
   defaultDatabase: 'default_database',
   defaultTable: 'default_table_name',
   cdpEndpoint: 'https://cdp.in.treasuredata.com' // Or other cdp endpoints
