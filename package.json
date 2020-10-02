@@ -11,9 +11,6 @@
     "ios",
     "td-react-native-sdk.podspec"
   ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/treasure-data/td-react-native-sdk.git",
@@ -26,7 +23,7 @@
     "name": "Treasure Data",
     "url": "https://www.treasuredata.com"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
   "peerDependencies": {
