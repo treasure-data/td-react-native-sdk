@@ -45,7 +45,7 @@ jobs:
         queries: +security-extended
     - name: build
       working-directory: ./android
-      run: ./gradlew installArchives
+      run: ./gradlew build
       
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
