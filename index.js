@@ -2,6 +2,11 @@ import { NativeModules } from 'react-native';
 
 const { TdReactNativeSdk } = NativeModules;
 
+/**
+ * TreasureData React Native module.
+ * @module TreasureData
+ */
+
 export default {
   
 /**
@@ -170,7 +175,7 @@ export default {
   * @see {@link add device model information to each event automatically}
   * 
   * @example
-  * todo
+  * TreasureData.enableAutoAppendModelInformation();
   * 
   * */
   enableAutoAppendModelInformation: () => {
@@ -193,10 +198,10 @@ export default {
   /**
   * Add application version information to each event automatically.
   * 
-  * @see {@link }
+  * @see {@link disableAutoAppendAppInformation}
   * 
   * @example
-  * todo
+  * TreasureData.enableAutoAppendAppInformation();
   * 
   * */
   enableAutoAppendAppInformation: () => {
@@ -458,12 +463,7 @@ export default {
   /**
   * Whether or not the custom event tracking is enable.
   * 
-  * @param {function} callback 
-  * 
-  * @see {@link }
-  * 
-  * @example
-  * todo
+  * @param {function} callback callback, passes in true/false accordingly. 
   * 
   * */
   isCustomEventEnabled: (callback) => {
