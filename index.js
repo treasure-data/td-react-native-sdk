@@ -4,6 +4,11 @@ const { TdReactNativeSdk } = NativeModules;
 
 /**
  * TreasureData React Native module.
+ * Get started with the [Quickstart](/docs/react-native-sdk/quickstart/).
+ * :::warning
+ * **This sdk is still in beta and contains experimental features, it may not be ready to be used in production app**
+ * :::
+ * 
  * @module TreasureData
  */
 
@@ -389,6 +394,9 @@ export default {
   * @see {@link setGlobalSessionTimeoutMilli}
   * @see {@link getGlobalSessionId}
   * 
+  * @example
+  * TreasureData.startGlobalSession()
+  * 
   * */
   startGlobalSession: () => {
     TdReactNativeSdk.startGlobalSession();
@@ -400,6 +408,9 @@ export default {
   * @see {@link startGlobalSession}
   * @see {@link setGlobalSessionTimeoutMilli}
   * @see {@link getGlobalSessionId}
+  * 
+  * @example
+  * TreasureData.endGlobalSession()
   * 
   * */
   endGlobalSession: () => {
@@ -473,8 +484,6 @@ export default {
   /**
   * @summary *Android Only* Enable tracking app lifecycle events automatically. Not enabled by default. 
   * 
-  * @param {type}
-  * 
   * @see {@link disableAppLifecycleEvent}
   * @see {@link isAppLifecycleEventEnabled}
   * 
@@ -488,8 +497,6 @@ export default {
   
   /**
   * *Android Only* Disable tracking app lifecycle events.
-  * 
-  * @param {type}
   * 
   * @see {@link enableAppLifecycleEvent}
   * @see {@link isAppLifecycleEventEnabled}
@@ -553,7 +560,7 @@ export default {
   /**
   * Check if tracking in app purchase events is enabled.
   * 
-  * @param {function} callback 
+  * @param {function} callback - Callback function
   * 
   * @see {@link enableInAppPurchaseEvent}
   * @see {@link disableInAppPurchaseEvent} 
@@ -621,6 +628,9 @@ export default {
   * 
   * @see {@link disableEventCompression}
   * 
+  * @example
+  * TreasureData.enableEventCompression()
+  * 
   * */
   enableEventCompression: () => {
     TdReactNativeSdk.enableEventCompression();
@@ -630,6 +640,9 @@ export default {
   * Event data will be uploaded in full uncompressed format.
   * 
   * @see {@link enableEventCompression}
+  * 
+  * @example
+  * TreasureData.disableEventCompression()
   * 
   * */
   disableEventCompression: () => {
@@ -679,6 +692,8 @@ export default {
   * 
   * @see {@link isFirstRun}
   * 
+  * @example
+  * TreasureData.clearFirstRun()
   * */
   clearFirstRun: () => {
     TdReactNativeSdk.clearFirstRun();
