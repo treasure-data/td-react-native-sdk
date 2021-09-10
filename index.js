@@ -17,13 +17,13 @@ export default {
 /**
  * Initialize the Treasure Data object. 
  * 
- * @param {json} configuration The configuration options 
+ * @param {json} configuration - Configuration options
  *   @param {string}  configuration.apiEndpoint      - Valid API endpoint for ingesting data. <br />[View full list of endpoints here.](https://docs.treasuredata.com/display/public/PD/Sites+and+Endpoints)
- *   @param {string}  configuration.apiKey           - Write only TD Api Key
- *   @param {string}  configuration.defaultDatabase  - Database name in TD Account
+ *   @param {string}  configuration.apiKey           - Write only TD API Key
+ *   @param {string}  configuration.defaultDatabase  - Database name in TD account
  *   @param {string}  configuration.defaultTable     - Table name in TD database
  *   @param {string}  [configuration.cdpEndpoint]    - Valid CDP endpoint for ingesting data. <br />[View full list of endpoints here.](https://docs.treasuredata.com/display/public/PD/Sites+and+Endpoints)
- *   @param {string}  [configuration.encryptionKey]  - Encryption key used to locally encrypt events when saved to device storage. This key will be used to generate a aes128 encrytpion key. Any string will work. 
+ *   @param {string}  [configuration.encryptionKey]  - Encryption key used to locally encrypt events when saved to device storage. This key will be used to generate an aes128 encryption key. Any string will work. 
  * 
  * @example
  * import TreasureData from 'td-react-native-sdk';
@@ -31,7 +31,7 @@ export default {
  * TreasureData.setup({
  *   apiEndpoint: 'https://in.treasure-data.com', // Or other supported endpoints
  *   encryptionKey: 'xxxxx',
- *   apiKey: 'xxxxx', /// You should use write only api key
+ *   apiKey: 'xxxxx', /// You should use write only API key
  *   defaultDatabase: 'default_database',
  *   defaultTable: 'default_table_name',
  *   cdpEndpoint: 'https://cdp.in.treasuredata.com' // Or other cdp endpoints

@@ -20,13 +20,13 @@ Initialize the Treasure Data object.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| configuration | <code>json</code> | The configuration options |
+| configuration | <code>json</code> | Configuration options |
 | configuration.apiEndpoint | <code>string</code> | Valid API endpoint for ingesting data. <br />[View full list of endpoints here.](https://docs.treasuredata.com/display/public/PD/Sites+and+Endpoints) |
-| configuration.apiKey | <code>string</code> | Write only TD Api Key |
-| configuration.defaultDatabase | <code>string</code> | Database name in TD Account |
+| configuration.apiKey | <code>string</code> | Write only TD API Key |
+| configuration.defaultDatabase | <code>string</code> | Database name in TD account |
 | configuration.defaultTable | <code>string</code> | Table name in TD database |
 | [configuration.cdpEndpoint] | <code>string</code> | Valid CDP endpoint for ingesting data. <br />[View full list of endpoints here.](https://docs.treasuredata.com/display/public/PD/Sites+and+Endpoints) |
-| [configuration.encryptionKey] | <code>string</code> | Encryption key used to locally encrypt events when saved to device storage. This key will be used to generate a aes128 encrytpion key. Any string will work. |
+| [configuration.encryptionKey] | <code>string</code> | Encryption key used to locally encrypt events when saved to device storage. This key will be used to generate an aes128 encryption key. Any string will work. |
 
 **Example**  
 ```js
@@ -35,7 +35,7 @@ import TreasureData from 'td-react-native-sdk';
 TreasureData.setup({
   apiEndpoint: 'https://in.treasure-data.com', // Or other supported endpoints
   encryptionKey: 'xxxxx',
-  apiKey: 'xxxxx', /// You should use write only api key
+  apiKey: 'xxxxx', /// You should use write only API key
   defaultDatabase: 'default_database',
   defaultTable: 'default_table_name',
   cdpEndpoint: 'https://cdp.in.treasuredata.com' // Or other cdp endpoints
