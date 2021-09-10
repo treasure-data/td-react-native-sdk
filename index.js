@@ -121,9 +121,8 @@ export default {
   },
 
   /**
-  * @summary Get the UUID value assigned to every event as td_uuid by the enableAutoAppendUniqID function.
-  * 
-  * @description This function assumes you have first called enableAutoApprendUniqID  , which causees all events to have a td_uuid field added to them. getUUID()  returns the value of this td_uuid key for the user to use as they see fit. Note that all events will have the same UUID appended to them.
+  * Get the UUID value assigned to every event as td_uuid by the enableAutoAppendUniqID function.
+  * This function assumes you have first called enableAutoApprendUniqID  , which causees all events to have a td_uuid field added to them. getUUID()  returns the value of this td_uuid key for the user to use as they see fit. Note that all events will have the same UUID appended to them.
   * 
   * @param {function} callback - passes the UUID.
   * 
@@ -311,9 +310,8 @@ export default {
   },
 
   /**
-  * @summary Add Advertising Id to each event record automatically.
+  * Add Advertising Id to each event record automatically.
   * 
-  * @description 
   * In Android, you must install Google Play Service Ads (`Gradle com.google.android.gms:play-services-ads`) as a dependency for this feature to work.  <br />
   * 
   * In iOS, you must link the Ad Support framework in the Link Binary With Libraries build phase for this feature to work.  <br />
@@ -484,7 +482,7 @@ export default {
   },
 
   /**
-  * @summary *Android Only* Enable tracking app lifecycle events automatically. Not enabled by default. 
+  * *Android Only* Enable tracking app lifecycle events automatically. Not enabled by default. 
   * 
   * @see {@link disableAppLifecycleEvent}
   * @see {@link isAppLifecycleEventEnabled}
@@ -530,9 +528,8 @@ export default {
   },
 
   /**
-  * @summary Track in-app purchase events automatically. Optional, not enabled by default.
-  * 
-  * @description You don't need to check for platform when calling this feature's APIs as they will simply be no-op. In-app purchase event tracking is optional and not enabled by default.
+  * Track in-app purchase events automatically. Optional, not enabled by default.
+  * You don't need to check for platform when calling this feature's APIs as they will simply be no-op. In-app purchase event tracking is optional and not enabled by default.
   * 
   * @see {@link disableInAppPurchaseEvent} 
   * @see {@link isInAppPurchaseEventEnabled}
@@ -578,9 +575,8 @@ export default {
   },
 
   /**
-  * @summary Profiles API.
-  * 
-  * @description This feature is not enabled on accounts by default. Contact support for more information. Important! You must set cdpEndpoint property of TreasureData's sharedInstance.
+  * Profiles API.
+  * This feature is not enabled on accounts by default. Contact support for more information. Important! You must set cdpEndpoint property of TreasureData's sharedInstance.
   * 
   * @param {string}   audienceTokens  Audience Tokens 
   * @param {string}   keys            Keys to access the Profile API 

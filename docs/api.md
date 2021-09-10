@@ -2,10 +2,10 @@
 
 ## TreasureData
 `TreasureData` <br /><br />
-TreasureData React Native module.
-Get started with the [Quickstart](/docs/react-native-sdk/quickstart/).
+Here is the API Reference for the Treasure Data React Native module.
+To get started, navigate to the [Quickstart](/docs/react-native-sdk/quickstart/).
 :::warning
-**This sdk is still in beta and contains experimental features, it may not be ready to be used in production app**
+**This SDK is still in beta and contains experimental features. It may not be ready for use in a production application.**
 :::
 
 
@@ -15,7 +15,7 @@ Get started with the [Quickstart](/docs/react-native-sdk/quickstart/).
 
 ### setup
 `TreasureData.setup(configuration)` <br /><br />
-Initialize Treasure Data object.
+Initialize the Treasure Data object.
 
 
 | Param | Type | Description |
@@ -48,10 +48,10 @@ TreasureData.setup({
 
 ### addEvent
 `TreasureData.addEvent(event, table, database)` <br /><br />
-Add custom event to specified database and table. 
+Add a custom event to a specified database and table. 
 The event will be buffered untill `uploadEvents()` is called.
-The total length of database and table must be shorter than 129 characters.
-If database param is not specified, `defaultDatabase` from the `setup()` will be used.
+The total combined length of the database and table names must be <=128 characters.
+If the database parameters are not specified, `defaultDatabase` from the `setup()` will be used.
 
 
 | Param | Type | Description |
@@ -74,14 +74,14 @@ TreasureData.addEvent(customEvent, 'table');
 
 ### addEventWithCallback
 `TreasureData.addEventWithCallback(event, table, database, callback)` <br /><br />
-Add event to specified database and table. Use callback to confirm success / failure.
+Add an event to a specified database and table. Use callback to confirm success / failure.
 
-You can pass 'null' or 'undefined' as database param and 'defaultDatabase' configuration in 'TreasureData.setup({...})' will be used instead.
+You can pass 'null' or 'undefined' as the database parameter and 'defaultDatabase' configuration in 'TreasureData.setup({...})' is used instead.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| event | <code>json</code> | JSON data to be uploded |
+| event | <code>json</code> | JSON data to be uploaded |
 | table | <code>string</code> | Table name |
 | database | <code>string</code> | Database name |
 | callback | <code>function</code> | Callback function |
@@ -139,8 +139,8 @@ TreasureData.uploadEventsWithCallback(() => {
 
 ### getUUID
 `TreasureData.getUUID(callback)` <br /><br />
-**Summary**: Get UUID generated from TreasureData.  
-The value will be set to `td_uuid` column for every events if `enableAutoAppendUniqId` is called.
+Get the UUID value assigned to every event as td_uuid by the enableAutoAppendUniqID function.
+This function assumes you have first called enableAutoApprendUniqID  , which causees all events to have a td_uuid field added to them. getUUID()  returns the value of this td_uuid key for the user to use as they see fit. Note that all events will have the same UUID appended to them.
 
 
 | Param | Type | Description |
@@ -168,7 +168,7 @@ TreasureData.enableAutoAppendUniqId();
 
 ### disableAutoAppendUniqId
 `TreasureData.disableAutoAppendUniqId()` <br /><br />
-Disable adding UUID of device to each event automatically.
+Disable adding the UUID of a device to each event automatically.
 
 **Example**  
 ```js
@@ -181,7 +181,7 @@ TreasureData.disableAutoAppendUniqId();
 
 ### resetUniqId
 `TreasureData.resetUniqId()` <br /><br />
-Reset UUID of device.
+Reset the UUID of the device.
 
 **Example**  
 ```js
@@ -272,7 +272,7 @@ TreasureData.disableAutoAppendLocaleInformation();
 
 ### enableServerSideUploadTimestamp
 `TreasureData.enableServerSideUploadTimestamp([columnName])` <br /><br />
-Use server side upload timestamp not only client device time that is recorded when your application calls addEvent.
+Use the server side upload timestamp in addition to the client device time that is recorded when your application calls addEvent.
 
 
 | Param | Type | Description |
@@ -292,7 +292,7 @@ TreasureData.enableServerSideUploadTimestamp('custom_servier_side_upload_timesta
 
 ### disableServerSideUploadTimestamp
 `TreasureData.disableServerSideUploadTimestamp()` <br /><br />
-Disable server side upload of timestamp.
+Disable server side upload timestamp.
 
 **Example**  
 ```js
@@ -305,7 +305,7 @@ TreasureData.disableServerSideUploadTimestamp();
 
 ### enableAutoAppendRecordUUID
 `TreasureData.enableAutoAppendRecordUUID()` <br /><br />
-Append UUID to each event record automatically. Each event has different UUID.
+Append UUID to each event record automatically. Each event has a different UUID.
 
 **Example**  
 ```js
@@ -318,7 +318,7 @@ TreasureData.enableAutoAppendRecordUUID();
 
 ### disableAutoAppendRecordUUID
 `TreasureData.disableAutoAppendRecordUUID()` <br /><br />
-Disable automatically
+Disable appending UUID to each event record automatically.
 
 **Example**  
 ```js
@@ -331,12 +331,13 @@ TreasureData.disableAutoAppendRecordUUID();
 
 ### enableAutoAppendAdvertisingIdentifier
 `TreasureData.enableAutoAppendAdvertisingIdentifier([columnName])` <br /><br />
-**Summary**: Add Advertising Id to each event record automatically.  
+Add Advertising Id to each event record automatically.
+
 In Android, you must install Google Play Service Ads (`Gradle com.google.android.gms:play-services-ads`) as a dependency for this feature to work.  <br />
 
-In iOS, you must link Ad Support framework in Link Binary With Libraries build phase for this feature to work.  <br />
+In iOS, you must link the Ad Support framework in the Link Binary With Libraries build phase for this feature to work.  <br />
 
-User must also not turn on Limit Ad Tracking feature in their device, otherwise, Treasure Data will not attach Advertising Id to the record. Due to asynchronous nature of getting Advertising Id, after `enableAutoAppendAdvertisingIdentifier` method called, it may take some time for Advertising Id to be available to be added to the record. However, Treasure Data does cache the Advertising Id in order to add to the next event without having to wait for the fetch Advertising Id task to complete.  <br />
+Users must also not turn on the Limit Ad Tracking feature in their device or Treasure Data will not attach the Advertising Id to the record. Due to the asynchronous nature of getting the Advertising Id, after the enableAutoAppendAdvertisingIdentifier method is called, it may take some time for the Advertising Id to be added to the record. However, Treasure Data does cache the Advertising Id in order to add it to the next event without having to wait for the fetch Advertising Id task to complete.  <br />
 
 
 | Param | Type | Description |
@@ -388,7 +389,7 @@ TreasureData.startSession(sessionTable, sessionDatabase);
 
 ### endSession
 `TreasureData.endSession(table, database)` <br /><br />
-End tracking current session.
+End tracking the current session.
 
 
 | Param | Type | Description |
@@ -421,7 +422,7 @@ Get current Session ID.
 
 ### startGlobalSession
 `TreasureData.startGlobalSession()` <br /><br />
-Start tracking a global session
+Start tracking a global session.
 
 **Example**  
 ```js
@@ -434,7 +435,7 @@ TreasureData.startGlobalSession()
 
 ### endGlobalSession
 `TreasureData.endGlobalSession()` <br /><br />
-End tracking global session.
+End tracking a global session.
 
 **Example**  
 ```js
@@ -447,7 +448,7 @@ TreasureData.endGlobalSession()
 
 ### setGlobalSessionTimeoutMilli
 `TreasureData.setGlobalSessionTimeoutMilli(timeout)` <br /><br />
-Set the Global Session timeout in milliseconds.
+Set the global session timeout in milliseconds.
 
 
 | Param | Type | Description |
@@ -501,7 +502,7 @@ TreasureData.disableCustomEvent();
 
 ### isCustomEventEnabled
 `TreasureData.isCustomEventEnabled(callback)` <br /><br />
-Whether or not the custom event tracking is enable.
+Whether or not the custom event tracking is enabled.
 
 
 | Param | Type | Description |
@@ -515,7 +516,8 @@ Whether or not the custom event tracking is enable.
 
 ### enableAppLifecycleEvent
 `TreasureData.enableAppLifecycleEvent()` <br /><br />
-**Summary**: *Android Only* Enable tracking app lifecycle events automatically. Not enabled by default.  
+*Android Only* Enable tracking app lifecycle events automatically. Not enabled by default.
+
 **Example**  
 ```js
 TreasureData.enableAppLifecycleEvent();
@@ -540,7 +542,7 @@ TreasureData.disableAppLifecycleEvent();
 
 ### isAppLifecycleEventEnabled
 `TreasureData.isAppLifecycleEventEnabled(callback)` <br /><br />
-*Android Only* Check if tracking app lifecycle events are enabled.
+*Android Only* Check if tracking app lifecycle events is enabled.
 
 
 | Param | Type | Description |
@@ -560,8 +562,8 @@ TreasureData.isAppLifecycleEventEnabled((enabled) => {
 
 ### enableInAppPurchaseEvent
 `TreasureData.enableInAppPurchaseEvent()` <br /><br />
-**Summary**: Track in app purchase events automatically. Optional, not enabled by default.  
-You don't need to check for platform when calling this feature's APIs, they will simply be no-op. In app purchase event tracking is optional and not enable by default.
+Track in-app purchase events automatically. Optional, not enabled by default.
+You don't need to check for platform when calling this feature's APIs as they will simply be no-op. In-app purchase event tracking is optional and not enabled by default.
 
 **Example**  
 ```js
@@ -574,7 +576,7 @@ TreasureData.enableInAppPurchaseEvent();
 
 ### disableInAppPurchaseEvent
 `TreasureData.disableInAppPurchaseEvent()` <br /><br />
-Disable in app purchase events.
+Disable in-app purchase events.
 
 **Example**  
 ```js
@@ -587,7 +589,7 @@ TreasureData.disableInAppPurchaseEvent();
 
 ### isInAppPurchaseEventEnabled
 `TreasureData.isInAppPurchaseEventEnabled(callback)` <br /><br />
-Check if tracking in app purchase events is enabled.
+Check if tracking in-app purchase events is enabled.
 
 
 | Param | Type | Description |
@@ -597,7 +599,7 @@ Check if tracking in app purchase events is enabled.
 **Example**  
 ```js
 TreasureData.isInAppPurchaseEventEnabled((enabled) => {
-  console.log('Tracking in app purchase event is enabled?', enabled);
+  console.log('Tracking in-app purchase event is enabled?', enabled);
 })
 ```
 
@@ -607,8 +609,8 @@ TreasureData.isInAppPurchaseEventEnabled((enabled) => {
 
 ### fetchUserSegments
 `TreasureData.fetchUserSegments(audienceTokens, keys, onSuccess, onError)` <br /><br />
-**Summary**: Profile API.  
-This feature is not enabled on accounts by default, please contact support for more information. Important! You must set cdpEndpoint property of TreasureData's sharedInstance.
+Profiles API.
+This feature is not enabled on accounts by default. Contact support for more information. Important! You must set cdpEndpoint property of TreasureData's sharedInstance.
 
 
 | Param | Type | Description |
@@ -672,7 +674,7 @@ TreasureData.enableEventCompression()
 
 ### disableEventCompression
 `TreasureData.disableEventCompression()` <br /><br />
-Event data will be uploaded in full uncompressed format.
+Event data will be uploaded in the full uncompressed format.
 
 **Example**  
 ```js
@@ -685,7 +687,7 @@ TreasureData.disableEventCompression()
 
 ### enableLogging
 `TreasureData.enableLogging()` <br /><br />
-Enable debug log.
+Enable the debug log.
 
 **Example**  
 ```js
@@ -698,7 +700,7 @@ TreasureData.enableLogging();
 
 ### disableLogging
 `TreasureData.disableLogging()` <br /><br />
-Disable debug log.
+Disable the debug log.
 
 **Example**  
 ```js
