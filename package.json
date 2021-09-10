@@ -16,6 +16,9 @@
     "url": "git+https://github.com/treasure-data/td-react-native-sdk.git",
     "baseUrl": "https://github.com/treasure-data/td-react-native-sdk"
   },
+  "scripts": {
+    "buildDocs": "jsdoc2md --files ./index.js --no-cache --separators --example-lang js --partial ./docs/partials/*.hbs > ./docs/api.md"
+  },
   "keywords": [
     "react-native", "treasure-data"
   ],
