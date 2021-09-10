@@ -3,10 +3,10 @@ import { NativeModules } from 'react-native';
 const { TdReactNativeSdk } = NativeModules;
 
 /**
- * TreasureData React Native module.
- * Get started with the [Quickstart](/docs/react-native-sdk/quickstart/).
+ * Here is the API Reference for the Treasure Data React Native module.
+ * To get started, navigate to the [Quickstart](/docs/react-native-sdk/quickstart/).
  * :::warning
- * **This sdk is still in beta and contains experimental features, it may not be ready to be used in production app**
+ * **This SDK is still in beta and contains experimental features. It may not be ready for use in a production application.**
  * :::
  * 
  * @module TreasureData
@@ -15,7 +15,7 @@ const { TdReactNativeSdk } = NativeModules;
 export default {
   
 /**
- * Initialize Treasure Data object. 
+ * Initialize the Treasure Data object. 
  * 
  * @param {json} configuration The configuration options 
  *   @param {string}  configuration.apiEndpoint      - Valid API endpoint for ingesting data. <br />[View full list of endpoints here.](https://docs.treasuredata.com/display/public/PD/Sites+and+Endpoints)
@@ -43,10 +43,10 @@ export default {
   },
 
   /**
-  * Add custom event to specified database and table. 
+  * Add a custom event to a specified database and table. 
   * The event will be buffered untill `uploadEvents()` is called.
-  * The total length of database and table must be shorter than 129 characters.
-  * If database param is not specified, `defaultDatabase` from the `setup()` will be used.
+  * The total combined length of the database and table names must be <=128 characters.
+  * If the database parameters are not specified, `defaultDatabase` from the `setup()` will be used.
   * 
   * @param {json}    event       JSON data to be uploded
   * @param {string}  table       Table name
@@ -66,11 +66,11 @@ export default {
   },
   
   /**
-  * Add event to specified database and table. Use callback to confirm success / failure.
+  * Add an event to a specified database and table. Use callback to confirm success / failure.
   * 
-  * You can pass 'null' or 'undefined' as database param and 'defaultDatabase' configuration in 'TreasureData.setup({...})' will be used instead.
+  * You can pass 'null' or 'undefined' as the database parameter and 'defaultDatabase' configuration in 'TreasureData.setup({...})' is used instead.
   * 
-  * @param {json}     event       JSON data to be uploded
+  * @param {json}     event       JSON data to be uploaded
   * @param {string}   table       Table name
   * @param {string}   database    Database name
   * @param {function} callback    Callback function
@@ -121,11 +121,13 @@ export default {
   },
 
   /**
-  * @summary Get UUID generated from TreasureData. 
+  * @summary Get the UUID value assigned to every event as td_uuid by the enableAutoAppendUniqID function.
   * 
-  * @description The value will be set to `td_uuid` column for every events if `enableAutoAppendUniqId` is called.
+  * @description This function assumes you have first called enableAutoApprendUniqID  , which causees all events to have a td_uuid field added to them. getUUID()  returns the value of this td_uuid key for the user to use as they see fit. Note that all events will have the same UUID appended to them.
   * 
   * @param {function} callback - passes the UUID.
+  * 
+  * @see {@link enableAutoAppendUniqID}
   * */
   getUUID: (callback) => {
     TdReactNativeSdk.getUUID(callback);
@@ -147,7 +149,7 @@ export default {
   },
   
   /**
-  * Disable adding UUID of device to each event automatically.
+  * Disable adding the UUID of a device to each event automatically.
   * 
   * @see {@link enableAutoAppendUniqId}
   * @see {@link resetUniqId}
@@ -161,7 +163,7 @@ export default {
   },
   
   /**
-  * Reset UUID of device.
+  * Reset the UUID of the device.
   * 
   * @see {@link enableAutoAppendUniqId}
   * @see {@link disableAutoAppendUniqId}
@@ -253,7 +255,7 @@ export default {
   },
 
   /**
-  * Use server side upload timestamp not only client device time that is recorded when your application calls addEvent.
+  * Use the server side upload timestamp in addition to the client device time that is recorded when your application calls addEvent.
   * 
   * @param {string} [columnName] Optional column name to store information to.
   * 
@@ -270,7 +272,7 @@ export default {
   },
   
   /**
-  * Disable server side upload of timestamp. 
+  * Disable server side upload timestamp. 
   * 
   * @see {@link enableServerSideUploadTimestamp}
   * 
@@ -283,7 +285,7 @@ export default {
   },
 
   /**
-  * Append UUID to each event record automatically. Each event has different UUID.
+  * Append UUID to each event record automatically. Each event has a different UUID.
   * 
   * @see {@link disableAutoAppendRecordUUID}
   * 
@@ -296,7 +298,7 @@ export default {
   },
   
   /**
-  * Disable automatically 
+  * Disable appending UUID to each event record automatically.
   * 
   * @see {@link enableAutoAppendRecordUUID}
   * 
@@ -314,9 +316,9 @@ export default {
   * @description 
   * In Android, you must install Google Play Service Ads (`Gradle com.google.android.gms:play-services-ads`) as a dependency for this feature to work.  <br />
   * 
-  * In iOS, you must link Ad Support framework in Link Binary With Libraries build phase for this feature to work.  <br />
+  * In iOS, you must link the Ad Support framework in the Link Binary With Libraries build phase for this feature to work.  <br />
   * 
-  * User must also not turn on Limit Ad Tracking feature in their device, otherwise, Treasure Data will not attach Advertising Id to the record. Due to asynchronous nature of getting Advertising Id, after `enableAutoAppendAdvertisingIdentifier` method called, it may take some time for Advertising Id to be available to be added to the record. However, Treasure Data does cache the Advertising Id in order to add to the next event without having to wait for the fetch Advertising Id task to complete.  <br />
+  * Users must also not turn on the Limit Ad Tracking feature in their device or Treasure Data will not attach the Advertising Id to the record. Due to the asynchronous nature of getting the Advertising Id, after the enableAutoAppendAdvertisingIdentifier method is called, it may take some time for the Advertising Id to be added to the record. However, Treasure Data does cache the Advertising Id in order to add it to the next event without having to wait for the fetch Advertising Id task to complete.  <br />
   * 
   * @param {string} [columnName] Optional column name to record advertising ID to.
   * 
@@ -362,7 +364,7 @@ export default {
   },
   
   /**
-  * End tracking current session.
+  * End tracking the current session.
   * 
   * @param {string} table     Table in database to log data to.
   * @param {string} database  Database to log data to.
@@ -388,7 +390,7 @@ export default {
   },
 
   /**
-  * Start tracking a global session
+  * Start tracking a global session.
   * 
   * @see {@link endGlobalSession}
   * @see {@link setGlobalSessionTimeoutMilli}
@@ -403,7 +405,7 @@ export default {
   },
   
   /**
-  * End tracking global session.
+  * End tracking a global session.
   * 
   * @see {@link startGlobalSession}
   * @see {@link setGlobalSessionTimeoutMilli}
@@ -418,7 +420,7 @@ export default {
   },
   
   /**
-  * Set the Global Session timeout in milliseconds.
+  * Set the global session timeout in milliseconds.
   * 
   * @param {integer} timeout Timeout in milliseconds
   * 
@@ -472,7 +474,7 @@ export default {
   },
   
   /**
-  * Whether or not the custom event tracking is enable.
+  * Whether or not the custom event tracking is enabled.
   * 
   * @param {function} callback callback, passes in true/false accordingly. 
   * 
@@ -510,7 +512,7 @@ export default {
   },
   
   /**
-  * *Android Only* Check if tracking app lifecycle events are enabled.
+  * *Android Only* Check if tracking app lifecycle events is enabled.
   * 
   * @param {function} callback Callback function that is passed `true` or `false` as an input
   * 
@@ -528,9 +530,9 @@ export default {
   },
 
   /**
-  * @summary Track in app purchase events automatically. Optional, not enabled by default.
+  * @summary Track in-app purchase events automatically. Optional, not enabled by default.
   * 
-  * @description You don't need to check for platform when calling this feature's APIs, they will simply be no-op. In app purchase event tracking is optional and not enable by default.
+  * @description You don't need to check for platform when calling this feature's APIs as they will simply be no-op. In-app purchase event tracking is optional and not enabled by default.
   * 
   * @see {@link disableInAppPurchaseEvent} 
   * @see {@link isInAppPurchaseEventEnabled}
@@ -544,7 +546,7 @@ export default {
   },
   
   /**
-  * Disable in app purchase events.
+  * Disable in-app purchase events.
   * 
   * @see {@link enableInAppPurchaseEvent}
   * @see {@link isInAppPurchaseEventEnabled}
@@ -558,7 +560,7 @@ export default {
   },
   
   /**
-  * Check if tracking in app purchase events is enabled.
+  * Check if tracking in-app purchase events is enabled.
   * 
   * @param {function} callback - Callback function
   * 
@@ -567,7 +569,7 @@ export default {
   * 
   * @example
   * TreasureData.isInAppPurchaseEventEnabled((enabled) => {
-  *   console.log('Tracking in app purchase event is enabled?', enabled);
+  *   console.log('Tracking in-app purchase event is enabled?', enabled);
   * })
   * 
   * */
@@ -576,9 +578,9 @@ export default {
   },
 
   /**
-  * @summary Profile API.
+  * @summary Profiles API.
   * 
-  * @description This feature is not enabled on accounts by default, please contact support for more information. Important! You must set cdpEndpoint property of TreasureData's sharedInstance. 
+  * @description This feature is not enabled on accounts by default. Contact support for more information. Important! You must set cdpEndpoint property of TreasureData's sharedInstance.
   * 
   * @param {string}   audienceTokens  Audience Tokens 
   * @param {string}   keys            Keys to access the Profile API 
@@ -637,7 +639,7 @@ export default {
   },
   
   /**
-  * Event data will be uploaded in full uncompressed format.
+  * Event data will be uploaded in the full uncompressed format.
   * 
   * @see {@link enableEventCompression}
   * 
@@ -650,7 +652,7 @@ export default {
   },
 
   /**
-  * Enable debug log.
+  * Enable the debug log.
   * 
   * @see {@link disableLogging}
   * 
@@ -663,7 +665,7 @@ export default {
   },
   
   /**
-  * Disable debug log.
+  * Disable the debug log.
   * 
   * @see {@link enableLogging}
   * 
