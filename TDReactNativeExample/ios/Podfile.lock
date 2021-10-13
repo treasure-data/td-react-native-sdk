@@ -297,7 +297,7 @@ PODS:
     - ReactCommon/callinvoker (= 0.62.2)
   - RNIap (4.5.0):
     - React
-  - td-react-native-sdk (0.0.1):
+  - td-react-native-sdk (0.1.0):
     - React
     - TreasureData-iOS-SDK (= 0.6.1)
   - TreasureData-iOS-SDK (0.6.1):
@@ -358,7 +358,7 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - boost-for-react-native
     - CocoaAsyncSocket
     - CocoaLibEvent
@@ -468,11 +468,11 @@ SPEC CHECKSUMS:
   React-RCTVibration: 4356114dbcba4ce66991096e51a66e61eda51256
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
   RNIap: e5ddd3f0621c714e48dace1e89a644c86a5e23fe
-  td-react-native-sdk: 01a8bda926dfe7e3f42d7f919416af0c8586dacb
+  td-react-native-sdk: 681fde1410ba6b1f5ef27e9aa23cbce1bd3d24af
   TreasureData-iOS-SDK: 20112bfd9942f64b9d12cc4619e6ce2f1dcfb8e6
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
 PODFILE CHECKSUM: 2c76c0dd3d6aa7c38b8c72011ec6e517bb02cd95
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.10.1

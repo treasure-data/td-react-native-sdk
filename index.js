@@ -39,7 +39,7 @@ export default {
  * 
  * */
   setup: (configuration) => {
-    TdReactNativeSdk(configuration);
+    TdReactNativeSdk.setup(configuration);
   },
 
   /**
@@ -85,7 +85,7 @@ export default {
   * 
   * */
   addEventWithCallback: (event, table, database = undefined, onSuccess, onError) => {
-    TdReactNativeSdk.addEvent(event, table, database, onSuccess, onError);
+    TdReactNativeSdk.addEventWithCallback(event, table, database, onSuccess, onError);
   },
 
   /**

@@ -71,7 +71,7 @@ class App extends React.Component {
 
   addEventWithCallback = () => {
     const testEvent = {origin: 'react native app', data: new Date().getSeconds()}
-    console.log("Adding event");
+    console.log("Adding event with callback");
     TreasureData.addEventWithCallback(testEvent, this.state.eventTable, this.state.eventDatabase, () => {
       this.alert("Add event successfully")
     }, (errorCode, errorMessage) => {
