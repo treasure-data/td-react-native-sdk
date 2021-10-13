@@ -42,6 +42,8 @@ class App extends React.Component {
       sessionDatabase: undefined,
       audienceTokens: config.audienceTokens,
       userSegmentKeys: config.userSegmentKeys,
+      defaultValueKey: undefined,
+      defaultValueValue: undefined,
       eventTable: config.eventTable,
       eventDatabase: config.eventDatabase
     }
@@ -306,6 +308,39 @@ class App extends React.Component {
     this.setState({userSegmentKeys});
   }
 
+  // Default Values
+
+  setDefaultValue = () => {
+    const {eventTable, eventDatabase, defaultValueKey, defaultValueValue} = this.state;
+    if (!defaultValueKey || !defaultValueValue) { this.alert('Key and Value must be set'); return }
+
+    TreasureData.setDefaultValue(defaultValueValue, defaultValueKey, eventDatabase, eventTable);
+  }
+
+  getDefaultValue = () => {
+    const {eventTable, eventDatabase, defaultValueKey} = this.state;
+    if (!defaultValueKey) { this.alert('Key must be set'); return }
+
+    TreasureData.defaultValue(defaultValueKey, eventDatabase, eventTable, (defaultValue) => {
+      this.alert('Default Value', defaultValue);
+    });
+  }
+
+  removeDefaultValue = () => {
+    const {eventTable, eventDatabase, defaultValueKey} = this.state;
+    if (!defaultValueKey) { this.alert('Key must be set'); return }
+    
+    TreasureData.removeDefaultValue(defaultValueKey, eventDatabase, eventTable);
+  }
+
+  onDefaultValueKeyChange = (text) => {
+    this.setState({defaultValueKey: text});
+  }
+
+  onDefaultValueValueChange = (text) => {
+    this.setState({defaultValueValue: text});
+  }
+
   // Retry Uploading
 
   enableRetryUploading = () => {
@@ -347,7 +382,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {sessionTable, sessionDatabase, audienceTokens, userSegmentKeys} = this.state;
+    const {sessionTable, sessionDatabase, audienceTokens, userSegmentKeys, defaultValueKey, defaultValueValue} = this.state;
 
     return (
       <>
@@ -464,6 +499,18 @@ class App extends React.Component {
                   <TextInput style={styles.textInput} onChangeText={this.onUserSegmentKeysChange} value={JSON.stringify(userSegmentKeys)} />
                 </Row>
                 <Row title="Fetch User Segments" onPress={this.fetchUserSegments} />
+              </View>
+              <Text style={styles.sectionTitle}>Default Values</Text>
+              <View style={styles.sectionContainer}>
+                <Row title='Key'>
+                  <TextInput style={styles.textInput} onChangeText={this.onDefaultValueKeyChange} value={defaultValueKey} />
+                </Row>
+                <Row title='Value'>
+                  <TextInput style={styles.textInput} onChangeText={this.onDefaultValueValueChange} value={defaultValueValue} />
+                </Row>
+                <Row title="Set Default Value" onPress={this.setDefaultValue} />
+                <Row title="Get Default Value" onPress={this.getDefaultValue} />
+                <Row title="Remove Default Value" onPress={this.removeDefaultValue} />
               </View>
               <Text style={styles.sectionTitle}>Retry Uploading</Text>
               <View style={styles.sectionContainer}>

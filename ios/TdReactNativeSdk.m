@@ -295,6 +295,21 @@ RCT_EXPORT_METHOD(fetchUserSegments:(nonnull NSArray<NSString *> *)audienceToken
     }];
 }
 
+#pragma mark - Default values
+
+RCT_EXPORT_METHOD(setDefaultValue:(nonnull id)value forKey:(nonnull NSString *)key database:(nullable NSString *)database table:(nullable NSString *)table) {
+    [[TreasureData sharedInstance] setDefaultValue:value forKey:key database:database table:table];
+}
+
+RCT_EXPORT_METHOD(defaultValue:(nonnull NSString*)key database:(nullable NSString *)database table:(nullable NSString *)table callback:(RCTResponseSenderBlock)callback) {
+    id defaultValue = [[TreasureData sharedInstance] defaultValueForKey:key database:database table:table];
+    callback(defaultValue == nil ? @[] : @[defaultValue]);
+}
+
+RCT_EXPORT_METHOD(removeDefaultValueForKey:(nonnull NSString *)key database:(nullable NSString *)database table:(nullable NSString *)table) {
+    [[TreasureData sharedInstance] removeDefaultValueForKey:key database:database table:table];
+}
+
 #pragma mark - Misc.
 
 #pragma mark Retry uploading

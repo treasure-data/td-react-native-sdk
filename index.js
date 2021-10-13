@@ -596,6 +596,47 @@ export default {
   },
 
   /**
+   * Set default `value` for  `key` in all new events targeting `database` and `table`.
+   * When `database` and/or `table` parameters are null, the null parameter acts like a wild card that allows to set specified key value pair to new events added to any database (if `database` is null) and/or to any table (if `table` is null).
+   * For example, if you pass null to both `database` and `table` parameters, all new events will have specified default value.
+   * 
+   * @param value default value for `key`
+   * @param key the event's key that default value is set to, corresponding to column in table.
+   * @param database the database to set default value to. If null, specified table of any database will have new events with the added default value.
+   * @param table the table to set default value to. If null, any table of specified database will have new events with the added default value.
+   * 
+   * */
+  setDefaultValue: (value, key, database, table) => {
+    TdReactNativeSdk.setDefaultValue(value, key, database, table);
+  },
+
+  /**
+   * Get default value of `key` in all new events targeting `database` and `table`.
+   * @see {@link setDefaultValue} for logic setting database and table.
+   * 
+   * @param key the event's key that default value is set to, corresponding to column in table.
+   * @param database the database to get default value from. If null, get default value of specified table of any database.
+   * @param table the table to get default value from. If null, get default value of any table of specified database.
+   * @param callback callback with the default value in first parameter.
+   * 
+   * */
+  defaultValue: (key, database, table, callback) => {
+    TdReactNativeSdk.defaultValue(key, database, table, callback);
+  },
+
+  /**
+   * Remove default value of `key` in all new events targeting `database` and `table`.
+   * @see {@link setDefaultValue} for logic setting database and table.
+   * 
+   * @param key the event's key that default value is set to, corresponding to column in table.
+   * @param database the database to remove default value from. If null, specified table of any database will have new events without the default value.
+   * @param table the table to remove default value from. If null, any table of specified database will have new events without the default value.
+   * */
+  removeDefaultValue: (key, database, table) => {
+    TdReactNativeSdk.removeDefaultValueForKey(key, database, table);
+  },
+
+  /**
   * Enable retry uploading.
   * 
   * @see {@link disableRetryUploading}
