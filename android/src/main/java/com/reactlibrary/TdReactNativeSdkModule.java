@@ -342,6 +342,11 @@ public class TdReactNativeSdkModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void resetGlobalSessionId() {
+        TreasureData.resetSessionId(this.reactContext);
+    }
+
+    @ReactMethod
     public void isAppLifecycleEventEnabled(Callback callback) {
         callback.invoke(TreasureData.sharedInstance().isAppLifecycleEventEnabled());
     }

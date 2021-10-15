@@ -223,6 +223,10 @@ class App extends React.Component {
     TreasureData.getGlobalSessionId(sessionId => this.alert('Global SessionId', sessionId));
   }
 
+  resetGlobalSessionId = () => {
+    TreasureData.resetGlobalSessionId();
+  }
+
   onSessionTableTextChange = (text) => {
     this.setState({sessionTable: text});
   }
@@ -469,6 +473,7 @@ class App extends React.Component {
                 <Row title="Get global session id" onPress={this.getGlobalSessionId} />
                 <Row title="Start global session" onPress={this.startGlobalSession} />
                 <Row title="End global session" onPress={this.endGlobalSession} />
+                <Row title="Reset global session" onPress={this.resetGlobalSessionId} />
                 <Row title="Set timeout" onPress={this.setGlobalSessionTimeoutMilli} />
               </View>
               <Text style={styles.sectionTitle}>Custom Event</Text>

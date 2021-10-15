@@ -227,6 +227,11 @@ RCT_EXPORT_METHOD(getGlobalSessionId:(RCTResponseSenderBlock)callback)
     }
 }
 
+RCT_EXPORT_METHOD(resetGlobalSessionId)
+{
+    [TreasureData resetSessionId];
+}
+
 #pragma mark - Automatically tracked events
 
 #pragma mark Custom Event

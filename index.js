@@ -445,6 +445,14 @@ export default {
     TdReactNativeSdk.getGlobalSessionId(callback);
   },
 
+
+  /**
+   * Reset global session. This will force create a new session when `startGlobalSession` is called.
+   * */
+  resetGlobalSessionId: () => {
+    TdReactNativeSdk.resetGlobalSessionId();
+  },
+
   /**
   * Enabled by default. Use this function to re-enable if disabled. 
   * 
