@@ -306,7 +306,7 @@ RCT_EXPORT_METHOD(defaultValue:(nonnull NSString*)key database:(nullable NSStrin
     callback(defaultValue == nil ? @[] : @[defaultValue]);
 }
 
-RCT_EXPORT_METHOD(removeDefaultValueForKey:(nonnull NSString *)key database:(nullable NSString *)database table:(nullable NSString *)table) {
+RCT_EXPORT_METHOD(removeDefaultValue:(nonnull NSString *)key database:(nullable NSString *)database table:(nullable NSString *)table) {
     [[TreasureData sharedInstance] removeDefaultValueForKey:key database:database table:table];
 }
 

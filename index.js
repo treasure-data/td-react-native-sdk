@@ -633,7 +633,7 @@ export default {
    * @param table the table to remove default value from. If null, any table of specified database will have new events without the default value.
    * */
   removeDefaultValue: (key, database, table) => {
-    TdReactNativeSdk.removeDefaultValueForKey(key, database, table);
+    TdReactNativeSdk.removeDefaultValue(key, database, table);
   },
 
   /**
