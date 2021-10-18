@@ -210,6 +210,38 @@ TreasureData.fetchUserSegments(audienceTokens, keys, (jsonResponse) => {
 });
 ```
 
+## Default values
+
+Set a default value if you want an event added to a table, a database, or any table or database to automatically set value for a key.
+If you have multiple default values set to the same key, newly added event will have the default value applied and override in following order:
+1. Default value targeting all table and database will be applied first.
+2. Default value targeting all table in a database will then be applied.
+3. Default value targeting the table to which the event is added will then be applied.
+4. Default value targeting the table and database to which the event is added will then be applied.
+5. Finally, if the event has a value for the key, that value will override all default values.
+
+To set default value:
+```
+TreasureData.setDefaultValue("value", "key"); // Targeting all databases and tables
+TreasureData.setDefaultValue("value", "key", "database_name"); // Targeting all tables of database "database_name"
+TreasureData.setDefaultValue("value", "key", null, "table_name"); // Targeting all tables with "table_name"
+TreasureData.setDefaultValue("value", "key", "database_name", "table_name"); // Targeting table "table_name" of database "database_name"
+```
+
+To get default value:
+```
+// Get default value for key targeting database "database_name" and table "table_name".
+TreasureData.defaultValue("key", "database_name", "table_name", (defaultValue) => {
+  console.log('Default Value', defaultValue);
+});
+```
+
+To remove default value:
+```
+// Only remove default values targeting database "database_name" and table "table_name".
+TreasureData.removeDefaultValue("key", "database_name", "table_name");
+```
+
 ## Enable/Disable debug log
 To enable debug log
 ```javascript
