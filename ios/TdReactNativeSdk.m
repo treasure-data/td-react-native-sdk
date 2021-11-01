@@ -227,6 +227,11 @@ RCT_EXPORT_METHOD(getGlobalSessionId:(RCTResponseSenderBlock)callback)
     }
 }
 
+RCT_EXPORT_METHOD(resetGlobalSessionId)
+{
+    [TreasureData resetSessionId];
+}
+
 #pragma mark - Automatically tracked events
 
 #pragma mark Custom Event
@@ -293,6 +298,21 @@ RCT_EXPORT_METHOD(fetchUserSegments:(nonnull NSArray<NSString *> *)audienceToken
             onError(@[@(error.code), error.localizedDescription]);
         }
     }];
+}
+
+#pragma mark - Default values
+
+RCT_EXPORT_METHOD(setDefaultValue:(nonnull id)value forKey:(nonnull NSString *)key database:(nullable NSString *)database table:(nullable NSString *)table) {
+    [[TreasureData sharedInstance] setDefaultValue:value forKey:key database:database table:table];
+}
+
+RCT_EXPORT_METHOD(defaultValue:(nonnull NSString*)key database:(nullable NSString *)database table:(nullable NSString *)table callback:(RCTResponseSenderBlock)callback) {
+    id defaultValue = [[TreasureData sharedInstance] defaultValueForKey:key database:database table:table];
+    callback(defaultValue == nil ? @[] : @[defaultValue]);
+}
+
+RCT_EXPORT_METHOD(removeDefaultValue:(nonnull NSString *)key database:(nullable NSString *)database table:(nullable NSString *)table) {
+    [[TreasureData sharedInstance] removeDefaultValueForKey:key database:database table:table];
 }
 
 #pragma mark - Misc.

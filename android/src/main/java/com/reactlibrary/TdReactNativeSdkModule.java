@@ -199,6 +199,22 @@ public class TdReactNativeSdkModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void setDefaultValue(String value, String key, @Nullable String database, @Nullable String table) {
+        TreasureData.sharedInstance().setDefaultValue(database, table, key, value);
+    }
+
+    @ReactMethod
+    public void defaultValue(String key, @Nullable String database, @Nullable String table, @Nullable final Callback callback) {
+        Object value = TreasureData.sharedInstance().getDefaultValue(database, table, key);
+        callback.invoke(value);
+    }
+
+    @ReactMethod
+    public void removeDefaultValue(String key, @Nullable String database, @Nullable String table) {
+        TreasureData.sharedInstance().removeDefaultValue(database, table, key);
+    }
+
+    @ReactMethod
     public void enableAppLifecycleEvent() {
         TreasureData.sharedInstance().enableAppLifecycleEvent(true);
     }
@@ -323,6 +339,11 @@ public class TdReactNativeSdkModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void getGlobalSessionId(Callback callback) {
         callback.invoke(TreasureData.getSessionId(this.reactContext));
+    }
+
+    @ReactMethod
+    public void resetGlobalSessionId() {
+        TreasureData.resetSessionId(this.reactContext);
     }
 
     @ReactMethod
