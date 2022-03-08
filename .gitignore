@@ -39,6 +39,13 @@ build/
 .gradle
 local.properties
 *.iml
+*.hprof
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
 .project
 .settings
 
