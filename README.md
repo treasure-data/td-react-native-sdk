@@ -178,18 +178,6 @@ To disable:
 TreasureData.disableAutoAppendLocaleInformation();
 ```
 
-## Use server side upload timestamp
-To use server side upload timestamp not only client device time that is recorded when your application calls addEvent
-```javascript
-TreasureData.enableServerSideUploadTimestamp();
-// Or specify custom column
-TreasureData.enableServerSideUploadTimestamp('custom_servier_side_upload_timestamp_column');
-```
-To disable:
-```javascript
-TreasureData.disableServerSideUploadTimestamp();
-```
-
 ## Start/End session
 Call `startSession` to start tracking a session
 ```javascript

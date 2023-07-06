@@ -268,39 +268,6 @@ TreasureData.disableAutoAppendLocaleInformation();
 
 * * *
 
-<a name="module_TreasureData.enableServerSideUploadTimestamp"></a>
-
-### enableServerSideUploadTimestamp
-`TreasureData.enableServerSideUploadTimestamp([columnName])` <br /><br />
-Use the server side upload timestamp in addition to the client device time that is recorded when your application calls addEvent.
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [columnName] | <code>string</code> | Optional column name to store information to. |
-
-**Example**  
-```js
-TreasureData.enableServerSideUploadTimestamp();
-// Or specify custom column
-TreasureData.enableServerSideUploadTimestamp('custom_servier_side_upload_timestamp_column');
-```
-
-* * *
-
-<a name="module_TreasureData.disableServerSideUploadTimestamp"></a>
-
-### disableServerSideUploadTimestamp
-`TreasureData.disableServerSideUploadTimestamp()` <br /><br />
-Disable server side upload timestamp.
-
-**Example**  
-```js
-TreasureData.disableServerSideUploadTimestamp();
-```
-
-* * *
-
 <a name="module_TreasureData.enableAutoAppendRecordUUID"></a>
 
 ### enableAutoAppendRecordUUID
@@ -472,6 +439,15 @@ Get the current global session ID.
 
 * * *
 
+<a name="module_TreasureData.resetGlobalSessionId"></a>
+
+### resetGlobalSessionId
+`TreasureData.resetGlobalSessionId()` <br /><br />
+Reset global session. This will force create a new session when `startGlobalSession` is called.
+
+
+* * *
+
 <a name="module_TreasureData.enableCustomEvent"></a>
 
 ### enableCustomEvent
@@ -628,6 +604,58 @@ TreasureData.fetchUserSegments(audienceTokens, keys, (jsonResponse) => {
   console.log('Failed to upload events', 'Error: ' + errorCode + ' ' + errorMessage);
 });
 ```
+
+* * *
+
+<a name="module_TreasureData.setDefaultValue"></a>
+
+### setDefaultValue
+`TreasureData.setDefaultValue(value, key, database, table)` <br /><br />
+Set default `value` for  `key` in all new events targeting `database` and `table`.
+When `database` and/or `table` parameters are null, the null parameter acts like a wild card that allows to set specified key value pair to new events added to any database (if `database` is null) and/or to any table (if `table` is null).
+For example, if you pass null to both `database` and `table` parameters, all new events will have specified default value.
+
+
+| Param | Description |
+| --- | --- |
+| value | default value for `key` |
+| key | the event's key that default value is set to, corresponding to column in table. |
+| database | the database to set default value to. If null, specified table of any database will have new events with the added default value. |
+| table | the table to set default value to. If null, any table of specified database will have new events with the added default value. |
+
+
+* * *
+
+<a name="module_TreasureData.defaultValue"></a>
+
+### defaultValue
+`TreasureData.defaultValue(key, database, table, callback)` <br /><br />
+Get default value of `key` in all new events targeting `database` and `table`.
+
+
+| Param | Description |
+| --- | --- |
+| key | the event's key that default value is set to, corresponding to column in table. |
+| database | the database to get default value from. If null, get default value of specified table of any database. |
+| table | the table to get default value from. If null, get default value of any table of specified database. |
+| callback | callback with the default value in first parameter. |
+
+
+* * *
+
+<a name="module_TreasureData.removeDefaultValue"></a>
+
+### removeDefaultValue
+`TreasureData.removeDefaultValue(key, database, table)` <br /><br />
+Remove default value of `key` in all new events targeting `database` and `table`.
+
+
+| Param | Description |
+| --- | --- |
+| key | the event's key that default value is set to, corresponding to column in table. |
+| database | the database to remove default value from. If null, specified table of any database will have new events without the default value. |
+| table | the table to remove default value from. If null, any table of specified database will have new events without the default value. |
+
 
 * * *
 

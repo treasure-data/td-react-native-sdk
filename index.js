@@ -254,36 +254,6 @@ export default {
   },
 
   /**
-  * Use the server side upload timestamp in addition to the client device time that is recorded when your application calls addEvent.
-  * 
-  * @param {string} [columnName] Optional column name to store information to.
-  * 
-  * @see {@link disableServerSideUploadTimestamp}
-  * 
-  * @example
-  * TreasureData.enableServerSideUploadTimestamp();
-  * // Or specify custom column
-  * TreasureData.enableServerSideUploadTimestamp('custom_servier_side_upload_timestamp_column');
-  * 
-  * */
-  enableServerSideUploadTimestamp: (columnName = undefined) => {
-    TdReactNativeSdk.enableServerSideUploadTimestamp(columnName);
-  },
-  
-  /**
-  * Disable server side upload timestamp. 
-  * 
-  * @see {@link enableServerSideUploadTimestamp}
-  * 
-  * @example
-  * TreasureData.disableServerSideUploadTimestamp();
-  * 
-  * */
-  disableServerSideUploadTimestamp: () => {
-    TdReactNativeSdk.disableServerSideUploadTimestamp();
-  },
-
-  /**
   * Append UUID to each event record automatically. Each event has a different UUID.
   * 
   * @see {@link disableAutoAppendRecordUUID}

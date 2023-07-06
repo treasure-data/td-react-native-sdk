@@ -45,10 +45,6 @@ public class TdReactNativeSdkModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setup(ReadableMap options) throws URISyntaxException {
-        if (options.hasKey("apiEndpoint")) {
-            TreasureData.initializeApiEndpoint(options.getString("apiEndpoint"));
-        }
-
         if (options.hasKey("apiKey")) {
             String defaultDatabase = DEFAULT_DATABASE;
 
@@ -71,7 +67,7 @@ public class TdReactNativeSdkModule extends ReactContextBaseJavaModule {
                 encryptionKey = options.getString("encryptionKey");
             }
 
-            TreasureData.initializeSharedInstance(this.reactContext, options.getString("apiKey"));
+            TreasureData.initializeSharedInstance(this.reactContext, options.getString("apiKey"), options.getString("apiEndpoint"));
 
             final TreasureData instance = TreasureData.sharedInstance();
 
@@ -267,20 +263,6 @@ public class TdReactNativeSdkModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void disableAutoAppendLocaleInformation() {
         TreasureData.sharedInstance().disableAutoAppendLocaleInformation();
-    }
-
-    @ReactMethod
-    public void enableServerSideUploadTimestamp(@Nullable String columnName) {
-        if (columnName == null || columnName.isEmpty()) {
-            TreasureData.sharedInstance().enableServerSideUploadTimestamp();
-        } else {
-            TreasureData.sharedInstance().enableServerSideUploadTimestamp(columnName);
-        }
-    }
-
-    @ReactMethod
-    public void disableServerSideUploadTimestamp() {
-        TreasureData.sharedInstance().disableServerSideUploadTimestamp();
     }
 
     @ReactMethod

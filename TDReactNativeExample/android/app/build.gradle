@@ -78,7 +78,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: true,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -125,6 +125,12 @@ def nativeArchitectures = project.getProperties().get("reactNativeDebugArchitect
 android {
     ndkVersion rootProject.ext.ndkVersion
     compileSdkVersion rootProject.ext.compileSdkVersion
+
+    configurations.all {
+        resolutionStrategy {
+            force 'androidx.browser:browser:1.2.0'
+        }
+    }
 
     defaultConfig {
         applicationId "com.treasuredata.android.demo.trivialdrive2.billingsample"
@@ -184,9 +190,13 @@ android {
 }
 
 dependencies {
+    configurations.implementation {
+      exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+    }
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
-    implementation "com.facebook.react:react-native:+"  // From node_modules
+
+    implementation ("com.facebook.react:react-native:+")
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation 'com.google.android.gms:play-services-ads:17.1.1'

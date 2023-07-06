@@ -9,9 +9,8 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(setup:(NSDictionary *)configuration)
 {
-    [TreasureData initializeApiEndpoint:configuration[@"apiEndpoint"]];
     [TreasureData initializeEncryptionKey:configuration[@"encryptionKey"]];
-    [TreasureData initializeWithApiKey:configuration[@"apiKey"]];
+    [TreasureData initializeWithApiKey:configuration[@"apiKey"] apiEndpoint:configuration[@"apiEndpoint"]];
     [[TreasureData sharedInstance] setDefaultDatabase:configuration[@"defaultDatabase"]];
     [[TreasureData sharedInstance] setDefaultTable:configuration[@"defaultTable"]];
     [[TreasureData sharedInstance] setCdpEndpoint:configuration[@"cdpEndpoint"]];
@@ -122,22 +121,6 @@ RCT_EXPORT_METHOD(enableAutoAppendLocaleInformation)
 RCT_EXPORT_METHOD(disableAutoAppendLocaleInformation)
 {
     [[TreasureData sharedInstance] disableAutoAppendLocaleInformation];
-}
-
-#pragma mark - Server Side Upload Timestamp
-
-RCT_EXPORT_METHOD(enableServerSideUploadTimestamp:(NSString *)columnName)
-{
-    if (columnName == nil) {
-        [[TreasureData sharedInstance] enableServerSideUploadTimestamp];
-    } else {
-        [[TreasureData sharedInstance] enableServerSideUploadTimestamp:columnName];
-    }
-}
-
-RCT_EXPORT_METHOD(disableServerSideUploadTimestamp)
-{
-    [[TreasureData sharedInstance] disableServerSideUploadTimestamp];
 }
 
 #pragma mark - Auto Append Record UUID

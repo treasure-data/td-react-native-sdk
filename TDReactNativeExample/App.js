@@ -143,19 +143,6 @@ class App extends React.Component {
     TreasureData.disableAutoAppendLocaleInformation();
   }
 
-  // Server Side Upload Timestamp
-  onServerSideUploadTimestampColumnNameChange = (text) => {
-    this.setState({serverSideUploadTimestampColumnName: text});
-  }
-
-  enableServerSideUploadTimestamp = () => {
-    TreasureData.enableServerSideUploadTimestamp(this.state.serverSideUploadTimestampColumnName);
-  }
-
-  disableServerSideUploadTimestamp = () => {
-    TreasureData.disableServerSideUploadTimestamp();
-  }
-
   // Auto Append Record UUID
   onRecordUUIDColumnNameChange = (text) => {
     this.setState({recordUUIDColumnName: text});
@@ -434,14 +421,6 @@ class App extends React.Component {
               <View style={styles.sectionContainer}>
                 <Row title="Enable" onPress={this.enableAutoAppendLocaleInformation} />
                 <Row title="Disable" onPress={this.disableAutoAppendLocaleInformation} />
-              </View>
-              <Text style={styles.sectionTitle}>Server Side Upload Timestamp</Text>
-              <View style={styles.sectionContainer}>
-                <Row title='Column name'>
-                  <TextInput style={styles.textInput} onChangeText={this.onServerSideUploadTimestampColumnNameChange} value={this.state.serverSideUploadTimestampColumnName} />
-                </Row>
-                <Row title="Enable" onPress={this.enableServerSideUploadTimestamp} />
-                <Row title="Disable" onPress={this.disableServerSideUploadTimestamp} />
               </View>
               <Text style={styles.sectionTitle}>Auto Append Record UUID</Text>
               <View style={styles.sectionContainer}>
