@@ -67,7 +67,11 @@ public class TdReactNativeSdkModule extends ReactContextBaseJavaModule {
                 encryptionKey = options.getString("encryptionKey");
             }
 
-            TreasureData.initializeSharedInstance(this.reactContext, options.getString("apiKey"), options.getString("apiEndpoint"));
+            if (options.hasKey("apiEndpoint")) {
+              TreasureData.initializeSharedInstance(this.reactContext, options.getString("apiKey"), options.getString("apiEndpoint"));
+            } else {
+              TreasureData.initializeSharedInstance(this.reactContext, options.getString("apiKey"));
+            }
 
             final TreasureData instance = TreasureData.sharedInstance();
 

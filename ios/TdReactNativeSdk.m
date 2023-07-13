@@ -10,7 +10,13 @@ RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(setup:(NSDictionary *)configuration)
 {
     [TreasureData initializeEncryptionKey:configuration[@"encryptionKey"]];
-    [TreasureData initializeWithApiKey:configuration[@"apiKey"] apiEndpoint:configuration[@"apiEndpoint"]];
+
+    if (configuration[@"apiEndpoint"]) {
+      [TreasureData initializeWithApiKey:configuration[@"apiKey"] apiEndpoint:configuration[@"apiEndpoint"]];
+    } else {
+      [TreasureData initializeWithApiKey:configuration[@"apiKey"]];
+    }
+
     [[TreasureData sharedInstance] setDefaultDatabase:configuration[@"defaultDatabase"]];
     [[TreasureData sharedInstance] setDefaultTable:configuration[@"defaultTable"]];
     [[TreasureData sharedInstance] setCdpEndpoint:configuration[@"cdpEndpoint"]];
