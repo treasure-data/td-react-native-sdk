@@ -15,13 +15,13 @@ Pod::Spec.new do |s|
   # optional - use expanded license entry instead:
   # s.license    = { :type => "MIT", :file => "LICENSE" }
   s.authors      = { "Your Name" => "yourname@email.com" }
-  s.platforms    = { :ios => "9.0" }
+  s.platforms    = { :ios => "12.0" }
   s.source       = { :git => "https://github.com/github_account/td-react-native-sdk.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,c,m,swift}"
   s.requires_arc = true
 
-  s.dependency "React"
-  s.dependency "TreasureData-iOS-SDK", "= 0.8.1"
+  s.dependency "React-Core"
+  s.dependency "TreasureData-iOS-SDK", "= 1.0.1"
 end
 
