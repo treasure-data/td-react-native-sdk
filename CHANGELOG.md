@@ -1,4 +1,4 @@
-## 0.4.0 (2023-07-17)
+## 1.0.0 (2023-07-17)
 
 * Update td-ios-sdk and td-android-sdk (v1.0.1)
 
