@@ -1,3 +1,7 @@
+## 1.0.0 (2023-07-17)
+
+* Update td-ios-sdk and td-android-sdk (v1.0.1)
+
 ## 0.3.0 (2022-03-15)
 
 * Update to support react-native 67
