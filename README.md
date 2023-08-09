@@ -1,6 +1,4 @@
-# td-react-native-sdk Beta
-
-> :warning: **This sdk is still in beta and contains experimental features, it may not be ready to be used in production app**
+# td-react-native-sdk
 
 td-react-native-sdk is React Native module that uses native iOS and Android SDK underneath to provide Treasure Data Mobile SDK features for React Native apps. You can see more detailed documentation in repositories for [Treasure Data iOS SDK](https://github.com/treasure-data/td-ios-sdk) and [Treasure Data Android SDK](https://github.com/treasure-data/td-android-sdk).
 
