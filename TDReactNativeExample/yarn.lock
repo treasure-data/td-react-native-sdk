@@ -6732,8 +6732,7 @@ table@^5.2.3:
     string-width "^3.0.0"
 
 "td-react-native-sdk@link:..":
-  version "0.0.0"
-  uid ""
+  version "0.3.0"
 
 temp@0.8.3:
   version "0.8.3"
